@@ -13,6 +13,7 @@ public:
 		if(m_pVal)
 		{
 			delete[] m_pVal; 
+			m_pVal = NULL;
 		}
 	}
 	operator T*() const throw()

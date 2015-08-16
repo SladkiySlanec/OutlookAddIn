@@ -64,6 +64,7 @@ private:
 	SmartSRowSet m_pRows;
 	
 public:
+	STDMETHOD (GetNextItemPro)(VARIANT ppsaMyArray, ULONG* size, VARIANT *buffer);
 	STDMETHOD(GetNextItem)(BSTR* DisplayName);
 	STDMETHOD(get_Count)(ULONG* pVal);
 };

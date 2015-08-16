@@ -19,6 +19,7 @@ interface IMapiSubFolders;
 interface IMapiFolderWrp : IDispatch{
 	[id(1)] HRESULT GetAllSubFolders([in] VARIANT mapiObject, [out,retval] IMapiSubFolders ** ppSubFolders);
 	[id(2)] HRESULT MoveTo([in] VARIANT session);
+
 };
 
 //************************************************************************
@@ -33,6 +34,7 @@ interface IMapiFolderWrp : IDispatch{
 interface IMapiSubFolders : IDispatch{
 	[id(1)] HRESULT GetNextItem([out] BSTR* DisplayName);
 	[propget, id(2)] HRESULT Count([out, retval] ULONG* pVal);
+	[id(3)] HRESULT GetNextItemPro([in] VARIANT ppsaMyArray, [in, out] ULONG* size, [out] VARIANT *buffer);
 };
 
 //************************************************************************
@@ -43,6 +45,19 @@ interface IMapiSubFolders : IDispatch{
 ]
 library MAPIWrapperLib
 {
+	typedef
+	[
+		helpstring("Mapi property tags")
+	]
+	enum MapiPropTags
+	{
+		DisplayName = 0x3001001F,
+		ContentCount  = 0x36020003,
+		AssociatedContentCount = 0x36170003,
+		HasSubfolders = 0x360A000B,
+		ParentSourceKey = 0x65E10102,
+	} MapiPropTags;
+
 	importlib("stdole2.tlb");
 	[
 		uuid(D88741BD-32E9-4747-8664-87218C302B87)		

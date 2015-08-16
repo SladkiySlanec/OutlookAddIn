@@ -10,7 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Outlook = Microsoft.Office.Interop.Outlook;
-
+using MAPIWrapperLib;
+using System.Runtime.InteropServices;
 namespace OutlookAddIn
 {
     public partial class EnumerateHierarchy : BaseForm
@@ -47,7 +48,7 @@ namespace OutlookAddIn
             try
             {
 
-                string temp;
+                string temp = "dfgdfgf";
                 var fldWrp = new MAPIWrapperLib.MapiFolderWrp();
 
                 //fldWrp.MoveTo(_folder.Session.Session.MAPIOBJECT);
@@ -57,10 +58,14 @@ namespace OutlookAddIn
                 var start = DateTime.Now;
                 Debug.WriteLine(start.ToString());
 
-                for (uint t = 0; t < count; t++)
-                {
-                    subs.GetNextItem(out temp);
-                }
+                var tt = new uint[] { (uint)MapiPropTags.DisplayName, (uint)MapiPropTags.ContentCount, (uint)MapiPropTags.HasSubfolders, (uint)MapiPropTags.AssociatedContentCount, (uint)MapiPropTags.ParentSourceKey };
+                
+                uint size = 0;
+                byte[] bt = new byte[100];
+                GCHandle classHandle = GCHandle.Alloc(bt, GCHandleType.Pinned);
+                object data; 
+                subs.GetNextItemPro(tt, ref size, out data);
+                
                 var end = DateTime.Now;
                 Debug.WriteLine(end.ToString());
                 MessageBox.Show(String.Format("Elapsed time - '{0}'", (end - start).ToString(@"hh\:mm\:ss")), "Enumeration completed");

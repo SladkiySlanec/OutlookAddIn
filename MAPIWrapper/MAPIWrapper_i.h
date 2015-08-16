@@ -4,7 +4,7 @@
 
 
  /* File created by MIDL compiler version 8.00.0595 */
-/* at Thu Jul 23 08:59:33 2015
+/* at Sun Aug 16 12:17:36 2015
  */
 /* Compiler settings for MAPIWrapper.idl:
     Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 8.00.0595 
@@ -271,6 +271,11 @@ EXTERN_C const IID IID_IMapiSubFolders;
         virtual /* [id][propget] */ HRESULT STDMETHODCALLTYPE get_Count( 
             /* [retval][out] */ ULONG *pVal) = 0;
         
+        virtual /* [id] */ HRESULT STDMETHODCALLTYPE GetNextItemPro( 
+            /* [in] */ VARIANT ppsaMyArray,
+            /* [out][in] */ ULONG *size,
+            /* [out] */ VARIANT *buffer) = 0;
+        
     };
     
     
@@ -337,6 +342,12 @@ EXTERN_C const IID IID_IMapiSubFolders;
             IMapiSubFolders * This,
             /* [retval][out] */ ULONG *pVal);
         
+        /* [id] */ HRESULT ( STDMETHODCALLTYPE *GetNextItemPro )( 
+            IMapiSubFolders * This,
+            /* [in] */ VARIANT ppsaMyArray,
+            /* [out][in] */ ULONG *size,
+            /* [out] */ VARIANT *buffer);
+        
         END_INTERFACE
     } IMapiSubFoldersVtbl;
 
@@ -379,6 +390,9 @@ EXTERN_C const IID IID_IMapiSubFolders;
 #define IMapiSubFolders_get_Count(This,pVal)	\
     ( (This)->lpVtbl -> get_Count(This,pVal) ) 
 
+#define IMapiSubFolders_GetNextItemPro(This,ppsaMyArray,size,buffer)	\
+    ( (This)->lpVtbl -> GetNextItemPro(This,ppsaMyArray,size,buffer) ) 
+
 #endif /* COBJMACROS */
 
 
@@ -396,6 +410,16 @@ EXTERN_C const IID IID_IMapiSubFolders;
 
 /* library MAPIWrapperLib */
 /* [version][uuid] */ 
+
+typedef /* [helpstring] */ 
+enum MapiPropTags
+    {
+        DisplayName	= 0x3001001f,
+        ContentCount	= 0x36020003,
+        AssociatedContentCount	= 0x36170003,
+        HasSubfolders	= 0x360a000b,
+        ParentSourceKey	= 0x65e10102
+    } 	MapiPropTags;
 
 
 EXTERN_C const IID LIBID_MAPIWrapperLib;

@@ -4,7 +4,7 @@
 
 
  /* File created by MIDL compiler version 8.00.0595 */
-/* at Thu Jul 23 08:59:33 2015
+/* at Sun Aug 16 12:17:36 2015
  */
 /* Compiler settings for MAPIWrapper.idl:
     Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 8.00.0595 
@@ -49,8 +49,8 @@
 
 #include "MAPIWrapper_i.h"
 
-#define TYPE_FORMAT_STRING_SIZE   1079                              
-#define PROC_FORMAT_STRING_SIZE   151                               
+#define TYPE_FORMAT_STRING_SIZE   1101                              
+#define PROC_FORMAT_STRING_SIZE   199                               
 #define EXPR_FORMAT_STRING_SIZE   1                                 
 #define TRANSMIT_AS_TABLE_SIZE    0            
 #define WIRE_MARSHAL_TABLE_SIZE   2            
@@ -241,6 +241,49 @@ static const MAPIWrapper_MIDL_PROC_FORMAT_STRING MAPIWrapper__MIDL_ProcFormatStr
 /* 144 */	NdrFcShort( 0x70 ),	/* Flags:  out, return, base type, */
 /* 146 */	NdrFcShort( 0x8 ),	/* x86 Stack size/offset = 8 */
 /* 148 */	0x8,		/* FC_LONG */
+			0x0,		/* 0 */
+
+	/* Procedure GetNextItemPro */
+
+/* 150 */	0x33,		/* FC_AUTO_HANDLE */
+			0x6c,		/* Old Flags:  object, Oi2 */
+/* 152 */	NdrFcLong( 0x0 ),	/* 0 */
+/* 156 */	NdrFcShort( 0x9 ),	/* 9 */
+/* 158 */	NdrFcShort( 0x20 ),	/* x86 Stack size/offset = 32 */
+/* 160 */	NdrFcShort( 0x1c ),	/* 28 */
+/* 162 */	NdrFcShort( 0x24 ),	/* 36 */
+/* 164 */	0x47,		/* Oi2 Flags:  srv must size, clt must size, has return, has ext, */
+			0x4,		/* 4 */
+/* 166 */	0x8,		/* 8 */
+			0x7,		/* Ext Flags:  new corr desc, clt corr check, srv corr check, */
+/* 168 */	NdrFcShort( 0x1 ),	/* 1 */
+/* 170 */	NdrFcShort( 0x1 ),	/* 1 */
+/* 172 */	NdrFcShort( 0x0 ),	/* 0 */
+
+	/* Parameter ppsaMyArray */
+
+/* 174 */	NdrFcShort( 0x8b ),	/* Flags:  must size, must free, in, by val, */
+/* 176 */	NdrFcShort( 0x4 ),	/* x86 Stack size/offset = 4 */
+/* 178 */	NdrFcShort( 0x400 ),	/* Type Offset=1024 */
+
+	/* Parameter size */
+
+/* 180 */	NdrFcShort( 0x158 ),	/* Flags:  in, out, base type, simple ref, */
+/* 182 */	NdrFcShort( 0x14 ),	/* x86 Stack size/offset = 20 */
+/* 184 */	0x8,		/* FC_LONG */
+			0x0,		/* 0 */
+
+	/* Parameter buffer */
+
+/* 186 */	NdrFcShort( 0x4113 ),	/* Flags:  must size, must free, out, simple ref, srv alloc size=16 */
+/* 188 */	NdrFcShort( 0x18 ),	/* x86 Stack size/offset = 24 */
+/* 190 */	NdrFcShort( 0x442 ),	/* Type Offset=1090 */
+
+	/* Return value */
+
+/* 192 */	NdrFcShort( 0x70 ),	/* Flags:  out, return, base type, */
+/* 194 */	NdrFcShort( 0x1c ),	/* x86 Stack size/offset = 28 */
+/* 196 */	0x8,		/* FC_LONG */
 			0x0,		/* 0 */
 
 			0x0
@@ -981,6 +1024,22 @@ static const MAPIWrapper_MIDL_TYPE_FORMAT_STRING MAPIWrapper__MIDL_TypeFormatStr
 			0x11, 0xc,	/* FC_RP [alloced_on_stack] [simple_pointer] */
 /* 1076 */	0x8,		/* FC_LONG */
 			0x5c,		/* FC_PAD */
+/* 1078 */	
+			0x11, 0x8,	/* FC_RP [simple_pointer] */
+/* 1080 */	0x8,		/* FC_LONG */
+			0x5c,		/* FC_PAD */
+/* 1082 */	
+			0x11, 0x4,	/* FC_RP [alloced_on_stack] */
+/* 1084 */	NdrFcShort( 0x6 ),	/* Offset= 6 (1090) */
+/* 1086 */	
+			0x13, 0x0,	/* FC_OP */
+/* 1088 */	NdrFcShort( 0xffac ),	/* Offset= -84 (1004) */
+/* 1090 */	0xb4,		/* FC_USER_MARSHAL */
+			0x83,		/* 131 */
+/* 1092 */	NdrFcShort( 0x0 ),	/* 0 */
+/* 1094 */	NdrFcShort( 0x10 ),	/* 16 */
+/* 1096 */	NdrFcShort( 0x0 ),	/* 0 */
+/* 1098 */	NdrFcShort( 0xfff4 ),	/* Offset= -12 (1086) */
 
 			0x0
         }
@@ -1100,7 +1159,8 @@ static const unsigned short IMapiSubFolders_FormatStringOffsetTable[] =
     (unsigned short) -1,
     (unsigned short) -1,
     78,
-    114
+    114,
+    150
     };
 
 static const MIDL_STUBLESS_PROXY_INFO IMapiSubFolders_ProxyInfo =
@@ -1124,7 +1184,7 @@ static const MIDL_SERVER_INFO IMapiSubFolders_ServerInfo =
     0,
     0,
     0};
-CINTERFACE_PROXY_VTABLE(9) _IMapiSubFoldersProxyVtbl = 
+CINTERFACE_PROXY_VTABLE(10) _IMapiSubFoldersProxyVtbl = 
 {
     &IMapiSubFolders_ProxyInfo,
     &IID_IMapiSubFolders,
@@ -1136,7 +1196,8 @@ CINTERFACE_PROXY_VTABLE(9) _IMapiSubFoldersProxyVtbl =
     0 /* IDispatch::GetIDsOfNames */ ,
     0 /* IDispatch_Invoke_Proxy */ ,
     (void *) (INT_PTR) -1 /* IMapiSubFolders::GetNextItem */ ,
-    (void *) (INT_PTR) -1 /* IMapiSubFolders::get_Count */
+    (void *) (INT_PTR) -1 /* IMapiSubFolders::get_Count */ ,
+    (void *) (INT_PTR) -1 /* IMapiSubFolders::GetNextItemPro */
 };
 
 
@@ -1147,6 +1208,7 @@ static const PRPC_STUB_FUNCTION IMapiSubFolders_table[] =
     STUB_FORWARDING_FUNCTION,
     STUB_FORWARDING_FUNCTION,
     NdrStubCall2,
+    NdrStubCall2,
     NdrStubCall2
 };
 
@@ -1154,7 +1216,7 @@ CInterfaceStubVtbl _IMapiSubFoldersStubVtbl =
 {
     &IID_IMapiSubFolders,
     &IMapiSubFolders_ServerInfo,
-    9,
+    10,
     &IMapiSubFolders_table[-3],
     CStdStubBuffer_DELEGATING_METHODS
 };
