@@ -134,7 +134,7 @@
     <ClCompile Include="Errors\MapiException.cpp" />
     <ClCompile Include="MapiFolderWrp.cpp" />
     <ClCompile Include="MapiSessionWrp.cpp" />
-    <ClCompile Include="MapiSubFolders.cpp" />
+    <ClCompile Include="MapiTableWrp.cpp" />
     <ClCompile Include="MAPIWrapper.cpp" />
     <ClCompile Include="MAPIWrapper_i.c">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
@@ -163,9 +163,10 @@
     <ClInclude Include="Errors\MapiException.h" />
     <ClInclude Include="MapiFolderWrp.h" />
     <ClInclude Include="MapiSessionWrp.h" />
-    <ClInclude Include="MapiSubFolders.h" />
+    <ClInclude Include="MapiTableWrp.h" />
     <ClInclude Include="MAPIWrapper_i.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="SafeArrayPtr.hpp" />
     <ClInclude Include="SmartPointers\BinaryHelper.hpp" />
     <ClInclude Include="SmartPointers\MapiSmartPtr.h" />
     <ClInclude Include="SmartPointers\SmartPtr.hpp" />

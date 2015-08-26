@@ -59,3 +59,4 @@
 #include "SmartPointers\SmartPtr.hpp"
 #include "Errors\EventLogReporter.h"
 #include "Errors\errors.hpp"
+#include "Errors\ComException.h"

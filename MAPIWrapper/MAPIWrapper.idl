@@ -6,7 +6,7 @@
 
 import "oaidl.idl";
 import "ocidl.idl";
-interface IMapiSubFolders;
+interface IMapiTableWrp;
 
 //************************************************************************
 [
@@ -17,7 +17,7 @@ interface IMapiSubFolders;
 	pointer_default(unique)
 ]
 interface IMapiFolderWrp : IDispatch{
-	[id(1)] HRESULT GetAllSubFolders([in] VARIANT mapiObject, [out,retval] IMapiSubFolders ** ppSubFolders);
+	[id(1)] HRESULT GetAllSubFolders([in] VARIANT mapiObject, [out,retval] IMapiTableWrp ** ppSubFolders);
 	[id(2)] HRESULT MoveTo([in] VARIANT session);
 
 };
@@ -26,15 +26,15 @@ interface IMapiFolderWrp : IDispatch{
 
 [
 	object,
-	uuid(B27D2DC8-FEF4-4F07-BA6B-9E423BC2657D),
+	uuid(2F5010CC-B8D4-4330-89DB-D36AC4F1237A),
 	dual,
 	nonextensible,
 	pointer_default(unique)
 ]
-interface IMapiSubFolders : IDispatch{
-	[id(1)] HRESULT GetNextItem([out] BSTR* DisplayName);
+interface IMapiTableWrp : IDispatch{
+	[id(1)] HRESULT GetNextItems([in] ULONG rowCount,[out] VARIANT *buffer);
 	[propget, id(2)] HRESULT Count([out, retval] ULONG* pVal);
-	[id(3)] HRESULT GetNextItemPro([in] VARIANT ppsaMyArray, [in, out] ULONG* size, [out] VARIANT *buffer);
+	[id(3)] HRESULT Setup([in] VARIANT propTags);
 };
 
 //************************************************************************
@@ -78,9 +78,9 @@ library MAPIWrapperLib
 	[
 		uuid(8CD1E521-F1E1-49A2-A31B-89E410B7BDBA)		
 	]
-	coclass MapiSubFolders
+	coclass MapiTable
 	{
-		[default] interface IMapiSubFolders;
+		[default] interface IMapiTableWrp;
 	};
 };
 

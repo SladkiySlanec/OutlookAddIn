@@ -2,7 +2,7 @@
 
 #include "stdafx.h"
 #include "MapiFolderWrp.h"
-#include "MapiSubFolders.h"
+#include "MapiTableWrp.h"
 #include ".\errors\checks.h"
 #include ".\errors\BaseException.h"
 #include "MapiSessionWrp.h"
@@ -41,7 +41,7 @@ void OutPut(LPCWSTR szStr)
 	OutputDebugString(szStr);
 	OutputDebugString(L"\n");
 }
-STDMETHODIMP CMapiFolderWrp::GetAllSubFolders(VARIANT mapiObject, IMapiSubFolders ** ppSubFolders)
+STDMETHODIMP CMapiFolderWrp::GetAllSubFolders(VARIANT mapiObject, IMapiTableWrp ** ppSubFolders)
 {
 	HRESULT hr = E_FAIL;
 	try
@@ -61,10 +61,10 @@ STDMETHODIMP CMapiFolderWrp::GetAllSubFolders(VARIANT mapiObject, IMapiSubFolder
 		hr = ptrMapiFolder->GetHierarchyTable(CONVENIENT_DEPTH, &pTable);
 		check_mapi_err(hr);
 
-		CComObject<CMapiSubFolders> * pSubFolders = NULL;
-		CComObject<CMapiSubFolders>::CreateInstance(&pSubFolders);
+		CComObject<CMapiTableWrp> * pSubFolders = NULL;
+		CComObject<CMapiTableWrp>::CreateInstance(&pSubFolders);
 		pSubFolders->Init(pTable);
-		CComPtr<IMapiSubFolders> ptrSubFolders(pSubFolders);
+		CComPtr<IMapiTableWrp> ptrSubFolders(pSubFolders);
 		*ppSubFolders = ptrSubFolders.Detach();
 	
 	}

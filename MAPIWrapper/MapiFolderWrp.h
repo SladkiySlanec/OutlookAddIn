@@ -63,7 +63,7 @@ END_CONNECTION_POINT_MAP()
 
 public:
 
-	STDMETHOD(GetAllSubFolders)(VARIANT mapiObject, IMapiSubFolders ** ppSubFolders);
+	STDMETHOD(GetAllSubFolders)(VARIANT mapiObject, IMapiTableWrp ** ppSubFolders);
 	STDMETHOD(MoveTo)(VARIANT mapiSession);
 private:
 	HRESULT Move(LPMAPIFOLDER pSrcFodler, LPMAPIFOLDER pTrgFodler);

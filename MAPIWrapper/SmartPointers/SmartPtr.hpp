@@ -3,7 +3,7 @@
 template <class T> class SmartPtr
 {
 public:
-	SmartPtr(T * p)
+	SmartPtr(T * p = NULL)
 	{
 		m_pVal = p;
 	}

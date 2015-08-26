@@ -53,18 +53,32 @@ namespace OutlookAddIn
 
                 //fldWrp.MoveTo(_folder.Session.Session.MAPIOBJECT);
 
-                MAPIWrapperLib.IMapiSubFolders subs = fldWrp.GetAllSubFolders(_folder.MAPIOBJECT);
+                MAPIWrapperLib.IMapiTableWrp subs = fldWrp.GetAllSubFolders(_folder.MAPIOBJECT);
                 var count = subs.Count;
                 var start = DateTime.Now;
                 Debug.WriteLine(start.ToString());
 
                 var tt = new uint[] { (uint)MapiPropTags.DisplayName, (uint)MapiPropTags.ContentCount, (uint)MapiPropTags.HasSubfolders, (uint)MapiPropTags.AssociatedContentCount, (uint)MapiPropTags.ParentSourceKey };
-                
-                uint size = 0;
-                byte[] bt = new byte[100];
-                GCHandle classHandle = GCHandle.Alloc(bt, GCHandleType.Pinned);
-                object data; 
-                subs.GetNextItemPro(tt, ref size, out data);
+
+                int countItems = 0;
+                object data = new object();
+                subs.Setup(tt);
+                int ii = 0;
+                while (true)
+                {
+                    subs.GetNextItems(255, out data);
+                    var folders = (object[])data;
+
+                    foreach (object[] folder in folders)
+                    {
+                         var props = (object[])folder[1];
+                         Debug.WriteLine(String.Format( "{0}. {1}",ii, props[0]));
+                         ii++;
+                    }
+                    countItems += folders.Length;
+                    if (countItems >= count)
+                        break;
+                }
                 
                 var end = DateTime.Now;
                 Debug.WriteLine(end.ToString());

@@ -4,7 +4,7 @@
 
 
  /* File created by MIDL compiler version 8.00.0595 */
-/* at Sun Aug 16 12:17:36 2015
+/* at Sun Aug 23 06:33:04 2015
  */
 /* Compiler settings for MAPIWrapper.idl:
     Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 8.00.0595 
@@ -52,11 +52,11 @@ typedef interface IMapiFolderWrp IMapiFolderWrp;
 #endif 	/* __IMapiFolderWrp_FWD_DEFINED__ */
 
 
-#ifndef __IMapiSubFolders_FWD_DEFINED__
-#define __IMapiSubFolders_FWD_DEFINED__
-typedef interface IMapiSubFolders IMapiSubFolders;
+#ifndef __IMapiTableWrp_FWD_DEFINED__
+#define __IMapiTableWrp_FWD_DEFINED__
+typedef interface IMapiTableWrp IMapiTableWrp;
 
-#endif 	/* __IMapiSubFolders_FWD_DEFINED__ */
+#endif 	/* __IMapiTableWrp_FWD_DEFINED__ */
 
 
 #ifndef ___IMapiFolderWrpEvents_FWD_DEFINED__
@@ -78,16 +78,16 @@ typedef struct MapiFolderWrp MapiFolderWrp;
 #endif 	/* __MapiFolderWrp_FWD_DEFINED__ */
 
 
-#ifndef __MapiSubFolders_FWD_DEFINED__
-#define __MapiSubFolders_FWD_DEFINED__
+#ifndef __MapiTable_FWD_DEFINED__
+#define __MapiTable_FWD_DEFINED__
 
 #ifdef __cplusplus
-typedef class MapiSubFolders MapiSubFolders;
+typedef class MapiTable MapiTable;
 #else
-typedef struct MapiSubFolders MapiSubFolders;
+typedef struct MapiTable MapiTable;
 #endif /* __cplusplus */
 
-#endif 	/* __MapiSubFolders_FWD_DEFINED__ */
+#endif 	/* __MapiTable_FWD_DEFINED__ */
 
 
 /* header files for imported files */
@@ -125,7 +125,7 @@ EXTERN_C const IID IID_IMapiFolderWrp;
     public:
         virtual /* [id] */ HRESULT STDMETHODCALLTYPE GetAllSubFolders( 
             /* [in] */ VARIANT mapiObject,
-            /* [retval][out] */ IMapiSubFolders **ppSubFolders) = 0;
+            /* [retval][out] */ IMapiTableWrp **ppSubFolders) = 0;
         
         virtual /* [id] */ HRESULT STDMETHODCALLTYPE MoveTo( 
             /* [in] */ VARIANT session) = 0;
@@ -191,7 +191,7 @@ EXTERN_C const IID IID_IMapiFolderWrp;
         /* [id] */ HRESULT ( STDMETHODCALLTYPE *GetAllSubFolders )( 
             IMapiFolderWrp * This,
             /* [in] */ VARIANT mapiObject,
-            /* [retval][out] */ IMapiSubFolders **ppSubFolders);
+            /* [retval][out] */ IMapiTableWrp **ppSubFolders);
         
         /* [id] */ HRESULT ( STDMETHODCALLTYPE *MoveTo )( 
             IMapiFolderWrp * This,
@@ -250,65 +250,64 @@ EXTERN_C const IID IID_IMapiFolderWrp;
 #endif 	/* __IMapiFolderWrp_INTERFACE_DEFINED__ */
 
 
-#ifndef __IMapiSubFolders_INTERFACE_DEFINED__
-#define __IMapiSubFolders_INTERFACE_DEFINED__
+#ifndef __IMapiTableWrp_INTERFACE_DEFINED__
+#define __IMapiTableWrp_INTERFACE_DEFINED__
 
-/* interface IMapiSubFolders */
+/* interface IMapiTableWrp */
 /* [unique][nonextensible][dual][uuid][object] */ 
 
 
-EXTERN_C const IID IID_IMapiSubFolders;
+EXTERN_C const IID IID_IMapiTableWrp;
 
 #if defined(__cplusplus) && !defined(CINTERFACE)
     
-    MIDL_INTERFACE("B27D2DC8-FEF4-4F07-BA6B-9E423BC2657D")
-    IMapiSubFolders : public IDispatch
+    MIDL_INTERFACE("2F5010CC-B8D4-4330-89DB-D36AC4F1237A")
+    IMapiTableWrp : public IDispatch
     {
     public:
-        virtual /* [id] */ HRESULT STDMETHODCALLTYPE GetNextItem( 
-            /* [out] */ BSTR *DisplayName) = 0;
+        virtual /* [id] */ HRESULT STDMETHODCALLTYPE GetNextItems( 
+            /* [in] */ ULONG rowCount,
+            /* [out] */ VARIANT *buffer) = 0;
         
         virtual /* [id][propget] */ HRESULT STDMETHODCALLTYPE get_Count( 
             /* [retval][out] */ ULONG *pVal) = 0;
         
-        virtual /* [id] */ HRESULT STDMETHODCALLTYPE GetNextItemPro( 
-            /* [in] */ VARIANT ppsaMyArray,
-            /* [out][in] */ ULONG *size,
-            /* [out] */ VARIANT *buffer) = 0;
+        virtual /* [id] */ HRESULT STDMETHODCALLTYPE Setup( 
+            /* [in] */ VARIANT propTags) = 0;
         
     };
     
     
 #else 	/* C style interface */
 
-    typedef struct IMapiSubFoldersVtbl
+    typedef struct IMapiTableWrpVtbl
     {
         BEGIN_INTERFACE
         
         HRESULT ( STDMETHODCALLTYPE *QueryInterface )( 
-            IMapiSubFolders * This,
+            IMapiTableWrp * This,
             /* [in] */ REFIID riid,
             /* [annotation][iid_is][out] */ 
             _COM_Outptr_  void **ppvObject);
         
         ULONG ( STDMETHODCALLTYPE *AddRef )( 
-            IMapiSubFolders * This);
+            IMapiTableWrp * This);
         
         ULONG ( STDMETHODCALLTYPE *Release )( 
-            IMapiSubFolders * This);
+            IMapiTableWrp * This);
         
         HRESULT ( STDMETHODCALLTYPE *GetTypeInfoCount )( 
-            IMapiSubFolders * This,
+            IMapiTableWrp * This,
             /* [out] */ UINT *pctinfo);
         
         HRESULT ( STDMETHODCALLTYPE *GetTypeInfo )( 
-            IMapiSubFolders * This,
+            IMapiTableWrp * This,
             /* [in] */ UINT iTInfo,
             /* [in] */ LCID lcid,
             /* [out] */ ITypeInfo **ppTInfo);
         
         HRESULT ( STDMETHODCALLTYPE *GetIDsOfNames )( 
-            IMapiSubFolders * This,
+            IMapiTableWrp * This,
             /* [in] */ REFIID riid,
             /* [size_is][in] */ LPOLESTR *rgszNames,
             /* [range][in] */ UINT cNames,
@@ -316,7 +315,7 @@ EXTERN_C const IID IID_IMapiSubFolders;
             /* [size_is][out] */ DISPID *rgDispId);
         
         /* [local] */ HRESULT ( STDMETHODCALLTYPE *Invoke )( 
-            IMapiSubFolders * This,
+            IMapiTableWrp * This,
             /* [annotation][in] */ 
             _In_  DISPID dispIdMember,
             /* [annotation][in] */ 
@@ -334,26 +333,25 @@ EXTERN_C const IID IID_IMapiSubFolders;
             /* [annotation][out] */ 
             _Out_opt_  UINT *puArgErr);
         
-        /* [id] */ HRESULT ( STDMETHODCALLTYPE *GetNextItem )( 
-            IMapiSubFolders * This,
-            /* [out] */ BSTR *DisplayName);
-        
-        /* [id][propget] */ HRESULT ( STDMETHODCALLTYPE *get_Count )( 
-            IMapiSubFolders * This,
-            /* [retval][out] */ ULONG *pVal);
-        
-        /* [id] */ HRESULT ( STDMETHODCALLTYPE *GetNextItemPro )( 
-            IMapiSubFolders * This,
-            /* [in] */ VARIANT ppsaMyArray,
-            /* [out][in] */ ULONG *size,
+        /* [id] */ HRESULT ( STDMETHODCALLTYPE *GetNextItems )( 
+            IMapiTableWrp * This,
+            /* [in] */ ULONG rowCount,
             /* [out] */ VARIANT *buffer);
         
+        /* [id][propget] */ HRESULT ( STDMETHODCALLTYPE *get_Count )( 
+            IMapiTableWrp * This,
+            /* [retval][out] */ ULONG *pVal);
+        
+        /* [id] */ HRESULT ( STDMETHODCALLTYPE *Setup )( 
+            IMapiTableWrp * This,
+            /* [in] */ VARIANT propTags);
+        
         END_INTERFACE
-    } IMapiSubFoldersVtbl;
+    } IMapiTableWrpVtbl;
 
-    interface IMapiSubFolders
+    interface IMapiTableWrp
     {
-        CONST_VTBL struct IMapiSubFoldersVtbl *lpVtbl;
+        CONST_VTBL struct IMapiTableWrpVtbl *lpVtbl;
     };
 
     
@@ -361,37 +359,37 @@ EXTERN_C const IID IID_IMapiSubFolders;
 #ifdef COBJMACROS
 
 
-#define IMapiSubFolders_QueryInterface(This,riid,ppvObject)	\
+#define IMapiTableWrp_QueryInterface(This,riid,ppvObject)	\
     ( (This)->lpVtbl -> QueryInterface(This,riid,ppvObject) ) 
 
-#define IMapiSubFolders_AddRef(This)	\
+#define IMapiTableWrp_AddRef(This)	\
     ( (This)->lpVtbl -> AddRef(This) ) 
 
-#define IMapiSubFolders_Release(This)	\
+#define IMapiTableWrp_Release(This)	\
     ( (This)->lpVtbl -> Release(This) ) 
 
 
-#define IMapiSubFolders_GetTypeInfoCount(This,pctinfo)	\
+#define IMapiTableWrp_GetTypeInfoCount(This,pctinfo)	\
     ( (This)->lpVtbl -> GetTypeInfoCount(This,pctinfo) ) 
 
-#define IMapiSubFolders_GetTypeInfo(This,iTInfo,lcid,ppTInfo)	\
+#define IMapiTableWrp_GetTypeInfo(This,iTInfo,lcid,ppTInfo)	\
     ( (This)->lpVtbl -> GetTypeInfo(This,iTInfo,lcid,ppTInfo) ) 
 
-#define IMapiSubFolders_GetIDsOfNames(This,riid,rgszNames,cNames,lcid,rgDispId)	\
+#define IMapiTableWrp_GetIDsOfNames(This,riid,rgszNames,cNames,lcid,rgDispId)	\
     ( (This)->lpVtbl -> GetIDsOfNames(This,riid,rgszNames,cNames,lcid,rgDispId) ) 
 
-#define IMapiSubFolders_Invoke(This,dispIdMember,riid,lcid,wFlags,pDispParams,pVarResult,pExcepInfo,puArgErr)	\
+#define IMapiTableWrp_Invoke(This,dispIdMember,riid,lcid,wFlags,pDispParams,pVarResult,pExcepInfo,puArgErr)	\
     ( (This)->lpVtbl -> Invoke(This,dispIdMember,riid,lcid,wFlags,pDispParams,pVarResult,pExcepInfo,puArgErr) ) 
 
 
-#define IMapiSubFolders_GetNextItem(This,DisplayName)	\
-    ( (This)->lpVtbl -> GetNextItem(This,DisplayName) ) 
+#define IMapiTableWrp_GetNextItems(This,rowCount,buffer)	\
+    ( (This)->lpVtbl -> GetNextItems(This,rowCount,buffer) ) 
 
-#define IMapiSubFolders_get_Count(This,pVal)	\
+#define IMapiTableWrp_get_Count(This,pVal)	\
     ( (This)->lpVtbl -> get_Count(This,pVal) ) 
 
-#define IMapiSubFolders_GetNextItemPro(This,ppsaMyArray,size,buffer)	\
-    ( (This)->lpVtbl -> GetNextItemPro(This,ppsaMyArray,size,buffer) ) 
+#define IMapiTableWrp_Setup(This,propTags)	\
+    ( (This)->lpVtbl -> Setup(This,propTags) ) 
 
 #endif /* COBJMACROS */
 
@@ -401,7 +399,7 @@ EXTERN_C const IID IID_IMapiSubFolders;
 
 
 
-#endif 	/* __IMapiSubFolders_INTERFACE_DEFINED__ */
+#endif 	/* __IMapiTableWrp_INTERFACE_DEFINED__ */
 
 
 
@@ -547,21 +545,16 @@ class DECLSPEC_UUID("02AE975F-6795-463E-BED8-6FFC1B74D958")
 MapiFolderWrp;
 #endif
 
-EXTERN_C const CLSID CLSID_MapiSubFolders;
+EXTERN_C const CLSID CLSID_MapiTable;
 
 #ifdef __cplusplus
 
 class DECLSPEC_UUID("8CD1E521-F1E1-49A2-A31B-89E410B7BDBA")
-MapiSubFolders;
+MapiTable;
 #endif
 #endif /* __MAPIWrapperLib_LIBRARY_DEFINED__ */
 
 /* Additional Prototypes for ALL interfaces */
-
-unsigned long             __RPC_USER  BSTR_UserSize(     unsigned long *, unsigned long            , BSTR * ); 
-unsigned char * __RPC_USER  BSTR_UserMarshal(  unsigned long *, unsigned char *, BSTR * ); 
-unsigned char * __RPC_USER  BSTR_UserUnmarshal(unsigned long *, unsigned char *, BSTR * ); 
-void                      __RPC_USER  BSTR_UserFree(     unsigned long *, BSTR * ); 
 
 unsigned long             __RPC_USER  VARIANT_UserSize(     unsigned long *, unsigned long            , VARIANT * ); 
 unsigned char * __RPC_USER  VARIANT_UserMarshal(  unsigned long *, unsigned char *, VARIANT * ); 

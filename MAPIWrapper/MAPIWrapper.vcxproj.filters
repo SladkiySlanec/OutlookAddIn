@@ -43,9 +43,6 @@
     <ClCompile Include="MapiFolderWrp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MapiSubFolders.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Errors\BaseException.cpp">
       <Filter>Errors</Filter>
     </ClCompile>
@@ -63,6 +60,9 @@
     </ClCompile>
     <ClCompile Include="Errors\ComException.cpp">
       <Filter>Errors</Filter>
+    </ClCompile>
+    <ClCompile Include="MapiTableWrp.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -86,9 +86,6 @@
     </ClInclude>
     <ClInclude Include="MapiFolderWrp.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MapiSubFolders.h">
-      <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="Errors\BaseException.h">
       <Filter>Errors</Filter>
@@ -140,6 +137,12 @@
     </ClInclude>
     <ClInclude Include="SmartPointers\BinaryHelper.hpp">
       <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="SafeArrayPtr.hpp">
+      <Filter>SmartPointers</Filter>
+    </ClInclude>
+    <ClInclude Include="MapiTableWrp.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
