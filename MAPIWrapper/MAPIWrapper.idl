@@ -17,7 +17,7 @@ interface IMapiTableWrp;
 	pointer_default(unique)
 ]
 interface IMapiFolderWrp : IDispatch{
-	[id(1)] HRESULT GetAllSubFolders([in] VARIANT mapiObject, [out,retval] IMapiTableWrp ** ppSubFolders);
+	[id(1)] HRESULT GetSubFolders([in] VARIANT mapiObject, [in] VARIANT_BOOL goDeep ,[out,retval] IMapiTableWrp ** ppSubFolders);
 	[id(2)] HRESULT MoveTo([in] VARIANT session);
 
 };

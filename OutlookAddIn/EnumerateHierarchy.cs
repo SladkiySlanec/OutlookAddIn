@@ -53,7 +53,7 @@ namespace OutlookAddIn
 
                 //fldWrp.MoveTo(_folder.Session.Session.MAPIOBJECT);
 
-                MAPIWrapperLib.IMapiTableWrp subs = fldWrp.GetAllSubFolders(_folder.MAPIOBJECT);
+                MAPIWrapperLib.IMapiTableWrp subs = fldWrp.GetSubFolders( _folder.MAPIOBJECT, false);
                 var count = subs.Count;
                 var start = DateTime.Now;
                 Debug.WriteLine(start.ToString());

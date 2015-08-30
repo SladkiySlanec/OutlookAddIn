@@ -6,7 +6,7 @@
 
 
  /* File created by MIDL compiler version 8.00.0595 */
-/* at Sun Aug 23 06:33:04 2015
+/* at Sun Aug 30 02:36:34 2015
  */
 /* Compiler settings for MAPIWrapper.idl:
     Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 8.00.0595 

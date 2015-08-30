@@ -4,7 +4,7 @@
 
 
  /* File created by MIDL compiler version 8.00.0595 */
-/* at Sun Aug 23 06:33:04 2015
+/* at Sun Aug 30 02:36:34 2015
  */
 /* Compiler settings for MAPIWrapper.idl:
     Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 8.00.0595 
@@ -123,8 +123,9 @@ EXTERN_C const IID IID_IMapiFolderWrp;
     IMapiFolderWrp : public IDispatch
     {
     public:
-        virtual /* [id] */ HRESULT STDMETHODCALLTYPE GetAllSubFolders( 
+        virtual /* [id] */ HRESULT STDMETHODCALLTYPE GetSubFolders( 
             /* [in] */ VARIANT mapiObject,
+            /* [in] */ VARIANT_BOOL goDeep,
             /* [retval][out] */ IMapiTableWrp **ppSubFolders) = 0;
         
         virtual /* [id] */ HRESULT STDMETHODCALLTYPE MoveTo( 
@@ -188,9 +189,10 @@ EXTERN_C const IID IID_IMapiFolderWrp;
             /* [annotation][out] */ 
             _Out_opt_  UINT *puArgErr);
         
-        /* [id] */ HRESULT ( STDMETHODCALLTYPE *GetAllSubFolders )( 
+        /* [id] */ HRESULT ( STDMETHODCALLTYPE *GetSubFolders )( 
             IMapiFolderWrp * This,
             /* [in] */ VARIANT mapiObject,
+            /* [in] */ VARIANT_BOOL goDeep,
             /* [retval][out] */ IMapiTableWrp **ppSubFolders);
         
         /* [id] */ HRESULT ( STDMETHODCALLTYPE *MoveTo )( 
@@ -233,8 +235,8 @@ EXTERN_C const IID IID_IMapiFolderWrp;
     ( (This)->lpVtbl -> Invoke(This,dispIdMember,riid,lcid,wFlags,pDispParams,pVarResult,pExcepInfo,puArgErr) ) 
 
 
-#define IMapiFolderWrp_GetAllSubFolders(This,mapiObject,ppSubFolders)	\
-    ( (This)->lpVtbl -> GetAllSubFolders(This,mapiObject,ppSubFolders) ) 
+#define IMapiFolderWrp_GetSubFolders(This,mapiObject,goDeep,ppSubFolders)	\
+    ( (This)->lpVtbl -> GetSubFolders(This,mapiObject,goDeep,ppSubFolders) ) 
 
 #define IMapiFolderWrp_MoveTo(This,session)	\
     ( (This)->lpVtbl -> MoveTo(This,session) ) 

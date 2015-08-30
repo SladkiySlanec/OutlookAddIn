@@ -41,7 +41,7 @@ void OutPut(LPCWSTR szStr)
 	OutputDebugString(szStr);
 	OutputDebugString(L"\n");
 }
-STDMETHODIMP CMapiFolderWrp::GetAllSubFolders(VARIANT mapiObject, IMapiTableWrp ** ppSubFolders)
+STDMETHODIMP CMapiFolderWrp::GetSubFolders(VARIANT mapiObject,  VARIANT_BOOL goDeep, IMapiTableWrp ** ppSubFolders)
 {
 	HRESULT hr = E_FAIL;
 	try
@@ -58,7 +58,12 @@ STDMETHODIMP CMapiFolderWrp::GetAllSubFolders(VARIANT mapiObject, IMapiTableWrp 
 		check_mapi_err(hr);
 
 		CComPtr<IMAPITable> pTable;
-		hr = ptrMapiFolder->GetHierarchyTable(CONVENIENT_DEPTH, &pTable);
+		ULONG flags = MAPI_UNICODE; 
+		if(goDeep)
+		{
+			flags|=CONVENIENT_DEPTH;
+		}
+		hr = ptrMapiFolder->GetHierarchyTable(flags, &pTable);
 		check_mapi_err(hr);
 
 		CComObject<CMapiTableWrp> * pSubFolders = NULL;
